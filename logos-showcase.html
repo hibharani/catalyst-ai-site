@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalyst AI Advisory — Logo Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700;12..96,800&family=Urbanist:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-dark: #08090e;
+            --bg-card-dark: #13151f;
+            --bg-light: #ffffff;
+            --bg-light-alt: #f5f5f7;
+            --text-dark: #f0f0f2;
+            --text-light: #1a1a2e;
+            --text-muted: #a0a3b1;
+            --accent: #e8503a;
+            --gold: #d4a044;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-light: rgba(0, 0, 0, 0.08);
+            --font-display: 'Bricolage Grotesque', serif;
+            --font-body: 'Urbanist', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-light);
+            background: var(--bg-light-alt);
+            line-height: 1.6;
+        }
+
+        .page-header {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .showcase-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .logo-card {
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .logo-card .label {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        /* Dark background cards */
+        .card-dark {
+            background: var(--bg-dark);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .card-dark .label {
+            color: var(--text-muted);
+        }
+
+        /* Light background cards */
+        .card-light {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .card-light .label {
+            color: #888;
+        }
+
+        /* Invert filter for SVGs on light backgrounds */
+        .card-light .logo-inverted img {
+            filter: none;
+        }
+
+        /* Size variants */
+        .size-small img, .size-small svg { width: 160px; }
+        .size-medium img, .size-medium svg { width: 300px; }
+        .size-large img, .size-large svg { width: 100%; max-width: 420px; }
+
+        /* Side-by-side section */
+        .side-by-side {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .side-by-side .logo-card {
+            border-radius: 0;
+            min-height: 160px;
+        }
+
+        .side-by-side .logo-card:first-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Sizes section */
+        .sizes-grid {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 2.5rem 2rem;
+            flex-wrap: wrap;
+        }
+
+        .size-item {
+            text-align: center;
+        }
+
+        .size-item .size-label {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 0.75rem;
+            opacity: 0.5;
+        }
+
+        .version-label {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .version-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+        }
+
+        /* Color palette reference */
+        .palette {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0 3rem;
+            flex-wrap: wrap;
+        }
+
+        .swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            position: relative;
+            border: 1px solid var(--border-light);
+        }
+
+        .swatch span {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            font-size: 0.6rem;
+            font-family: monospace;
+            color: #888;
+            white-space: nowrap;
+        }
+
+        /* Light-friendly SVG wrapper: re-color text for white bg */
+        .light-svg-wrapper {
+            position: relative;
+        }
+
+        .light-svg-wrapper img {
+            /* For light backgrounds, we apply a CSS filter to darken the white text */
+        }
+
+        /* We'll use inline SVGs with modified fills for light background display */
+    </style>
+</head>
+<body>
+
+<div class="page-header">
+    <h1>Catalyst AI Advisory</h1>
+    <p>Logo Options &mdash; Priya Sharma's Brand Identity</p>
+</div>
+
+<div class="showcase-container">
+
+    <!-- Color Palette Reference -->
+    <h2 class="section-title">Brand Palette</h2>
+    <div class="palette">
+        <div class="swatch" style="background: #08090e;"><span>#08090e</span></div>
+        <div class="swatch" style="background: #13151f;"><span>#13151f</span></div>
+        <div class="swatch" style="background: #e8503a;"><span>#e8503a</span></div>
+        <div class="swatch" style="background: #ff6b54;"><span>#ff6b54</span></div>
+        <div class="swatch" style="background: #d4a044;"><span>#d4a044</span></div>
+        <div class="swatch" style="background: #f0c060;"><span>#f0c060</span></div>
+        <div class="swatch" style="background: #f0f0f2; border-color: #ccc;"><span>#f0f0f2</span></div>
+        <div class="swatch" style="background: #a0a3b1;"><span>#a0a3b1</span></div>
+    </div>
+
+    <!-- ==================== LOGO V1 ==================== -->
+    <h2 class="section-title">Version 1 &mdash; Mark + Wordmark</h2>
+    <p class="version-desc">
+        A catalyst spark mark (converging lines rising to an apex) paired with the "Catalyst AI" wordmark.
+        The icon represents a turning point / acceleration moment. Works as both a full logo and a standalone favicon mark.
+    </p>
+
+    <!-- Dark background -->
+    <div class="comparison-row">
+        <div class="logo-card card-dark size-large">
+            <span class="label">Dark Background</span>
+            <img src="logo-v1.svg" alt="Catalyst AI Logo V1 on dark background">
+        </div>
+        <div class="logo-card card-light size-large">
+            <span class="label">Light Background</span>
+            <!-- On light bg, we inline the SVG with adjusted text colors -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" style="max-width: 420px; width: 100%;">
+                <defs>
+                    <linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e8503a"/>
+                        <stop offset="100%" stop-color="#f0c060"/>
+                    </linearGradient>
+                    <linearGradient id="mg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ff6b54"/>
+                        <stop offset="50%" stop-color="#e8503a"/>
+                        <stop offset="100%" stop-color="#d4a044"/>
+                    </linearGradient>
+                </defs>
+                <g transform="translate(10, 6)">
+                    <path d="M 30 62 L 34 28 L 38 8 L 42 28 L 46 62"
+                          fill="none" stroke="url(#mg1)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M 12 56 L 28 34 L 38 16"
+                          fill="none" stroke="#e8503a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M 64 56 L 48 34 L 38 16"
+                          fill="none" stroke="#e8503a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="38" cy="8" r="4" fill="url(#sg1)"/>
+                    <circle cx="22" cy="44" r="2" fill="#d4a044" opacity="0.7"/>
+                    <circle cx="54" cy="44" r="2" fill="#d4a044" opacity="0.7"/>
+                    <line x1="14" y1="62" x2="62" y2="62" stroke="#666" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+                </g>
+                <text x="95" y="42" font-family="'Bricolage Grotesque', 'Segoe UI', Arial, sans-serif"
+                      font-weight="700" font-size="32" fill="#1a1a2e" letter-spacing="-0.5">Catalyst</text>
+                <text x="270" y="42" font-family="'Bricolage Grotesque', 'Segoe UI', Arial, sans-serif"
+                      font-weight="700" font-size="32" fill="#e8503a" letter-spacing="-0.5">AI</text>
+                <text x="95" y="62" font-family="'Urbanist', 'Segoe UI', Arial, sans-serif"
+                      font-weight="400" font-size="11" fill="#666" letter-spacing="3">ADVISORY</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Size variations on dark -->
+    <div class="logo-card card-dark" style="border-radius: 12px; margin-bottom: 2rem;">
+        <span class="label">Size Variations (Dark)</span>
+        <div class="sizes-grid">
+            <div class="size-item">
+                <img src="logo-v1.svg" alt="V1 small" style="width: 120px;">
+                <span class="size-label" style="color: var(--text-muted);">Small (120px)</span>
+            </div>
+            <div class="size-item">
+                <img src="logo-v1.svg" alt="V1 medium" style="width: 260px;">
+                <span class="size-label" style="color: var(--text-muted);">Medium (260px)</span>
+            </div>
+            <div class="size-item">
+                <img src="logo-v1.svg" alt="V1 large" style="width: 400px;">
+                <span class="size-label" style="color: var(--text-muted);">Large (400px)</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==================== LOGO V2 ==================== -->
+    <h2 class="section-title">Version 2 &mdash; Typographic Mark</h2>
+    <p class="version-desc">
+        A purely typographic logo: "CATALYST" in bold caps with a distinctive diagonal slash through the first "A",
+        representing the catalyst turning point. A small diamond spark sits at the top of the slash.
+        "AI" is set in the vermillion accent. No icon needed &mdash; the letterform treatment IS the mark.
+    </p>
+
+    <!-- Dark background -->
+    <div class="comparison-row">
+        <div class="logo-card card-dark size-large">
+            <span class="label">Dark Background</span>
+            <img src="logo-v2.svg" alt="Catalyst AI Logo V2 on dark background">
+        </div>
+        <div class="logo-card card-light size-large">
+            <span class="label">Light Background</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 80" style="max-width: 420px; width: 100%;">
+                <defs>
+                    <linearGradient id="ag2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#e8503a"/>
+                        <stop offset="100%" stop-color="#d4a044"/>
+                    </linearGradient>
+                </defs>
+                <text x="0" y="52" font-family="'Bricolage Grotesque', 'Segoe UI', Arial, sans-serif"
+                      font-weight="800" font-size="46" fill="#1a1a2e" letter-spacing="-1.5">CATALYST</text>
+                <line x1="55" y1="52" x2="78" y2="14"
+                      stroke="url(#ag2)" stroke-width="3.5" stroke-linecap="round"/>
+                <polygon points="78,10 81,14 78,18 75,14" fill="#e8503a"/>
+                <text x="295" y="52" font-family="'Bricolage Grotesque', 'Segoe UI', Arial, sans-serif"
+                      font-weight="800" font-size="46" fill="#e8503a" letter-spacing="-1.5">AI</text>
+                <circle cx="286" cy="42" r="3" fill="#d4a044"/>
+                <text x="1" y="72" font-family="'Urbanist', 'Segoe UI', Arial, sans-serif"
+                      font-weight="500" font-size="11" fill="#666" letter-spacing="5.5">A D V I S O R Y</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Size variations on dark -->
+    <div class="logo-card card-dark" style="border-radius: 12px; margin-bottom: 2rem;">
+        <span class="label">Size Variations (Dark)</span>
+        <div class="sizes-grid">
+            <div class="size-item">
+                <img src="logo-v2.svg" alt="V2 small" style="width: 120px;">
+                <span class="size-label" style="color: var(--text-muted);">Small (120px)</span>
+            </div>
+            <div class="size-item">
+                <img src="logo-v2.svg" alt="V2 medium" style="width: 260px;">
+                <span class="size-label" style="color: var(--text-muted);">Medium (260px)</span>
+            </div>
+            <div class="size-item">
+                <img src="logo-v2.svg" alt="V2 large" style="width: 400px;">
+                <span class="size-label" style="color: var(--text-muted);">Large (400px)</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==================== SIDE BY SIDE ==================== -->
+    <h2 class="section-title">Side-by-Side Comparison</h2>
+
+    <div class="side-by-side" style="margin-bottom: 1rem;">
+        <div class="logo-card card-dark" style="min-height: 180px;">
+            <div style="text-align: center;">
+                <div class="version-label" style="color: var(--gold);">V1 &mdash; Mark + Wordmark</div>
+                <img src="logo-v1.svg" alt="V1" style="width: 320px;">
+            </div>
+        </div>
+        <div class="logo-card card-dark" style="min-height: 180px;">
+            <div style="text-align: center;">
+                <div class="version-label" style="color: var(--gold);">V2 &mdash; Typographic</div>
+                <img src="logo-v2.svg" alt="V2" style="width: 320px;">
+            </div>
+        </div>
+    </div>
+
+    <div class="side-by-side" style="margin-bottom: 3rem;">
+        <div class="logo-card card-light" style="min-height: 180px;">
+            <div style="text-align: center;">
+                <div class="version-label">V1 &mdash; Mark + Wordmark</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" style="width: 320px;">
+                    <defs>
+                        <linearGradient id="sg1b" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#e8503a"/>
+                            <stop offset="100%" stop-color="#f0c060"/>
+                        </linearGradient>
+                        <linearGradient id="mg1b" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff6b54"/>
+                            <stop offset="50%" stop-color="#e8503a"/>
+                            <stop offset="100%" stop-color="#d4a044"/>
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(10, 6)">
+                        <path d="M 30 62 L 34 28 L 38 8 L 42 28 L 46 62" fill="none" stroke="url(#mg1b)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 12 56 L 28 34 L 38 16" fill="none" stroke="#e8503a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 64 56 L 48 34 L 38 16" fill="none" stroke="#e8503a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="38" cy="8" r="4" fill="url(#sg1b)"/>
+                        <circle cx="22" cy="44" r="2" fill="#d4a044" opacity="0.7"/>
+                        <circle cx="54" cy="44" r="2" fill="#d4a044" opacity="0.7"/>
+                        <line x1="14" y1="62" x2="62" y2="62" stroke="#666" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+                    </g>
+                    <text x="95" y="42" font-family="'Bricolage Grotesque', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="32" fill="#1a1a2e" letter-spacing="-0.5">Catalyst</text>
+                    <text x="270" y="42" font-family="'Bricolage Grotesque', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="32" fill="#e8503a" letter-spacing="-0.5">AI</text>
+                    <text x="95" y="62" font-family="'Urbanist', 'Segoe UI', Arial, sans-serif" font-weight="400" font-size="11" fill="#666" letter-spacing="3">ADVISORY</text>
+                </svg>
+            </div>
+        </div>
+        <div class="logo-card card-light" style="min-height: 180px;">
+            <div style="text-align: center;">
+                <div class="version-label">V2 &mdash; Typographic</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 80" style="width: 320px;">
+                    <defs>
+                        <linearGradient id="ag2b" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#e8503a"/>
+                            <stop offset="100%" stop-color="#d4a044"/>
+                        </linearGradient>
+                    </defs>
+                    <text x="0" y="52" font-family="'Bricolage Grotesque', 'Segoe UI', Arial, sans-serif" font-weight="800" font-size="46" fill="#1a1a2e" letter-spacing="-1.5">CATALYST</text>
+                    <line x1="55" y1="52" x2="78" y2="14" stroke="url(#ag2b)" stroke-width="3.5" stroke-linecap="round"/>
+                    <polygon points="78,10 81,14 78,18 75,14" fill="#e8503a"/>
+                    <text x="295" y="52" font-family="'Bricolage Grotesque', 'Segoe UI', Arial, sans-serif" font-weight="800" font-size="46" fill="#e8503a" letter-spacing="-1.5">AI</text>
+                    <circle cx="286" cy="42" r="3" fill="#d4a044"/>
+                    <text x="1" y="72" font-family="'Urbanist', 'Segoe UI', Arial, sans-serif" font-weight="500" font-size="11" fill="#666" letter-spacing="5.5">A D V I S O R Y</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== NOTES ==================== -->
+    <h2 class="section-title">Design Notes</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;">
+        <div style="background: white; border-radius: 12px; padding: 2rem; border: 1px solid rgba(0,0,0,0.08);">
+            <h3 style="font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--accent);">V1 &mdash; Mark + Wordmark</h3>
+            <ul style="font-size: 0.9rem; color: #555; line-height: 1.8; padding-left: 1.2rem;">
+                <li>The mark shows three converging lines rising to a spark point &mdash; a visual metaphor for "catalyst" as acceleration and transformation</li>
+                <li>The spark/circle at the apex doubles as a favicon at small sizes</li>
+                <li>Vermillion-to-gold gradient on the mark ties it to the site's accent palette</li>
+                <li>"Catalyst" in Bricolage Grotesque (display font), "AI" in vermillion accent</li>
+                <li>"ADVISORY" in Urbanist with wide letter-spacing for a premium feel</li>
+            </ul>
+        </div>
+        <div style="background: white; border-radius: 12px; padding: 2rem; border: 1px solid rgba(0,0,0,0.08);">
+            <h3 style="font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--accent);">V2 &mdash; Typographic</h3>
+            <ul style="font-size: 0.9rem; color: #555; line-height: 1.8; padding-left: 1.2rem;">
+                <li>Bold, all-caps "CATALYST" in Bricolage Grotesque at 800 weight &mdash; authoritative and distinctive</li>
+                <li>A diagonal slash through the first "A" with a diamond spark at its tip &mdash; the catalyst moment built into the letterform</li>
+                <li>Gold separator dot between "CATALYST" and "AI" creates visual rhythm</li>
+                <li>No icon needed &mdash; the modified "A" IS the brand mark</li>
+                <li>Spaced-out "ADVISORY" tagline provides a clean, premium base</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
