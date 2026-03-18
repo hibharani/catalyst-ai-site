@@ -2369,8 +2369,44 @@
                 chatTyping.classList.remove('visible');
 
                 if (response.ok && data.reply) {
-                    addMessage('assistant', data.reply);
+                    let reply = data.reply;
+                    let intakeData = null;
+
+                    // Check for intake completion markers
+                    if (reply.includes('[INTAKE_COMPLETE]')) {
+                        // Extract intake data JSON if present
+                        const intakeDataMatch = reply.match(/\[INTAKE_DATA\]([\s\S]*?)\[\/INTAKE_DATA\]/);
+                        if (intakeDataMatch) {
+                            try {
+                                intakeData = JSON.parse(intakeDataMatch[1]);
+                            } catch (e) {
+                                console.error('Failed to parse intake data:', e);
+                            }
+                            // Strip the INTAKE_DATA block from displayed reply
+                            reply = reply.replace(/\[INTAKE_DATA\][\s\S]*?\[\/INTAKE_DATA\]/, '').trim();
+                        }
+                        // Strip the INTAKE_COMPLETE marker from displayed reply
+                        reply = reply.replace(/\[INTAKE_COMPLETE\]/, '').trim();
+                    }
+
+                    // Show the clean reply to the user
+                    addMessage('assistant', reply);
+                    // Store full original reply in chat history for API context
                     chatHistory.push({ role: 'assistant', content: data.reply });
+
+                    // If intake is complete, fire off proposal generation
+                    if (intakeData) {
+                        setTimeout(() => {
+                            fetch('/api/generate-proposal', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ messages: chatHistory, intake: intakeData }),
+                            }).catch(err => console.error('Proposal generation request failed:', err));
+
+                            addMessage('assistant', "I'm preparing your proposal now. Keep an eye on your inbox!");
+                            chatHistory.push({ role: 'assistant', content: "I'm preparing your proposal now. Keep an eye on your inbox!" });
+                        }, 1000);
+                    }
                 } else {
                     addMessage('assistant', 'Sorry, something went wrong. Do one thing — reach out directly at priya@catalystai.in');
                 }
